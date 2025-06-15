@@ -3,26 +3,26 @@ import logging
 
 from os import getenv
 
-from aiogram import Bot, Dispatcher, html
+from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
-from aiogram.filters import CommandStart
-from aiogram.types import Message
 from aiogram.client.default import DefaultBotProperties
+
+from app.handlers import router
 
 from dotenv import load_dotenv
 load_dotenv()
 
 TOKEN = getenv("BOT_TOKEN")
 
-dp = Dispatcher()
-
-@dp.message(CommandStart())
-async def start(message: Message) -> None:
-    await message.answer(f"Hello, {html.bold(message.from_user.full_name)}!\n" + 
-                         f"Your id is {html.bold(message.from_user.id)}")
-
 async def main() -> None:
-    bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+    bot = Bot(
+        token=TOKEN, 
+        default=DefaultBotProperties(parse_mode=ParseMode.HTML)
+    )
+
+    dp = Dispatcher()
+    dp.include_router(router)   
+
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
