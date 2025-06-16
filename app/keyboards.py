@@ -1,7 +1,14 @@
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 
-registerKeyboard = ReplyKeyboardMarkup(
-    keyboard=[[KeyboardButton(text="Зарегистрироваться")]],
-    input_field_placeholder="Нажмите для ниже для регистрации.",
+menu_keyboard = ReplyKeyboardMarkup(
+    keyboard=[[KeyboardButton(text="Зарегистрироваться")],
+              [KeyboardButton(text="Мой статус")]],
+    input_field_placeholder="Нажмите для ниже для продолжения.",
     resize_keyboard=True,
 )
+
+withdraw_keyboard = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="Сняться с турнира", callback_data="withdraw")]
+    ]
+) 
