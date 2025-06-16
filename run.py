@@ -8,6 +8,7 @@ from aiogram.enums import ParseMode
 from aiogram.client.default import DefaultBotProperties
 
 from app.handlers import router
+from app.db.models import migarte
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -15,6 +16,8 @@ load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
 
 async def main() -> None:
+    await migarte()
+    
     bot = Bot(
         token=TOKEN, 
         default=DefaultBotProperties(parse_mode=ParseMode.HTML)
