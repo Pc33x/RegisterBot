@@ -52,5 +52,3 @@ async def set_status(message: Message, state: FSMContext):
     else:
         await message.answer("Пользователя с таким никнеймом не существует.\n" +
                               "Введите никнейм заново.")
-
-    

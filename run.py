@@ -9,7 +9,7 @@ from aiogram.client.default import DefaultBotProperties
 
 from app.handlers import user_router
 from app.admin_handlers import admin_router
-from app.db.models import migarte
+from app.db.models import migrate
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -17,7 +17,7 @@ load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
 
 async def main() -> None:
-    await migarte()
+    await migrate()
     
     bot = Bot(
         token=TOKEN, 
