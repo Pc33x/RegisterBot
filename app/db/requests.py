@@ -32,7 +32,7 @@ async def user_exists(tg_id: int) -> bool:
     
 async def nickname_exists(nickname: str) -> bool:
     async with async_session() as session:
-        return await session.scalar(select(User.nickname).where(User.nickname == nickname))
+        user = await session.scalar(select(User.nickname).where(User.nickname == nickname))
         return user is not None
     
 async def get_all_users() -> Iterable[User]:
