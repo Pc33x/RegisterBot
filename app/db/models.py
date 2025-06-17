@@ -20,6 +20,7 @@ class User(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     tg_id = mapped_column(BigInteger)
+    tg_username: Mapped[str] = mapped_column()
     nickname: Mapped[str] = mapped_column()
     paid: Mapped[bool] = mapped_column(default=False)
 
