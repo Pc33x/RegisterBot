@@ -1,0 +1,11 @@
+services:
+  tg:
+    build: .
+    command:
+      - "uv"
+      - "run"
+      - "run.py"
+    env_file:
+      - .env
+    restart: 
+      - on-failure

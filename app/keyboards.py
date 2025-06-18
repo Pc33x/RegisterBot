@@ -3,7 +3,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMar
 menu_keyboard = ReplyKeyboardMarkup(
     keyboard=[[KeyboardButton(text="📋 Зарегистрироваться")],
               [KeyboardButton(text="📊 Мой профиль")]],
-    input_field_placeholder="Нажмите для ниже для продолжения.",
+    input_field_placeholder="Нажмите ниже для продолжения.",
     resize_keyboard=True,
 )
 
