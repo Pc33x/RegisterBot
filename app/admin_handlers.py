@@ -7,6 +7,7 @@ from app.config import admin_ids
 from app.keyboards import admin_menu_keyboard
 from app.states import Admin
 from app.db.requests import get_all_users, nickname_exists, set_paid
+from app.mc.cmds import give_permissions
 
 admin_router = Router()
 
@@ -48,6 +49,13 @@ async def set_status(message: Message, state: FSMContext):
     if await nickname_exists(nickname):
         await set_paid(nickname)
         await message.answer("Статус пользователя был сменен на 'Оплачен'.", reply_markup=admin_menu_keyboard)
+
+        try:
+            give_permissions(nickname)
+            await message.answer(f"Пользователь {nickname} получил права на сервере.")
+        except:
+            await message.answer("При подключении к серверу произошла ошибка.")
+            
         await state.set_state(Admin.menu)
     else:
         await message.answer("Пользователя с таким никнеймом не существует.\n" +

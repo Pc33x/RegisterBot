@@ -8,3 +8,5 @@ services:
     env_file:
       - .env
     restart: on-failure
+    volumes:
+      - ./db.sqlite3:/bot/db.sqlite3
